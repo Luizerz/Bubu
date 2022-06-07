@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-extension UIView{
-    var width:CGFloat{
+extension UIView {
+    var width: CGFloat {
         return frame.size.width
     }
-    var height:CGFloat{
+    var height: CGFloat {
         return frame.size.height
     }
 }
