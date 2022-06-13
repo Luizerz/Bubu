@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E201AB42857623200BB1CFC /* EnunciadoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E201AB32857623200BB1CFC /* EnunciadoView.swift */; };
+		4E201AB6285768B800BB1CFC /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E201AB5285768B800BB1CFC /* ChallengeViewController.swift */; };
 		4E912837284E33BC001BD10D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E912836284E33BC001BD10D /* Extensions.swift */; };
 		4FD6D4E8284E27040021F235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6D4E7284E27040021F235 /* AppDelegate.swift */; };
 		4FD6D4EA284E27040021F235 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6D4E9284E27040021F235 /* SceneDelegate.swift */; };
@@ -17,7 +19,6 @@
 		4FD6D4FF284E27050021F235 /* BubuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6D4FE284E27050021F235 /* BubuTests.swift */; };
 		4FD6D509284E27050021F235 /* BubuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6D508284E27050021F235 /* BubuUITests.swift */; };
 		4FD6D50B284E27050021F235 /* BubuUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6D50A284E27050021F235 /* BubuUITestsLaunchTests.swift */; };
-		4FF3C4722850DBB7004E3065 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF3C4712850DBB7004E3065 /* LevelButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E201AB32857623200BB1CFC /* EnunciadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnunciadoView.swift; sourceTree = "<group>"; };
+		4E201AB5285768B800BB1CFC /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		4E912836284E33BC001BD10D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4FD6D4E4284E27040021F235 /* Bubu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bubu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FD6D4E7284E27040021F235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +55,6 @@
 		4FD6D504284E27050021F235 /* BubuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BubuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FD6D508284E27050021F235 /* BubuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubuUITests.swift; sourceTree = "<group>"; };
 		4FD6D50A284E27050021F235 /* BubuUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubuUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		4FF3C4712850DBB7004E3065 /* LevelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LevelButton.swift; path = Bubu/Views/LevelButton.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,27 +82,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E201AB22857621000BB1CFC /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				4E201AB32857623200BB1CFC /* EnunciadoView.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		4E91282F284E3155001BD10D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4E201AB22857621000BB1CFC /* Other */,
 				4E912831284E3215001BD10D /* Core */,
-				4E912830284E320F001BD10D /* Other */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		4E912830284E320F001BD10D /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				4FF3C4712850DBB7004E3065 /* LevelButton.swift */,
-			);
-			path = Other;
 			sourceTree = "<group>";
 		};
 		4E912831284E3215001BD10D /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				4FD6D4EB284E27040021F235 /* HomeViewController.swift */,
+				4E201AB5285768B800BB1CFC /* ChallengeViewController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -343,9 +346,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FD6D4EC284E27040021F235 /* HomeViewController.swift in Sources */,
-				4FF3C4722850DBB7004E3065 /* LevelButton.swift in Sources */,
 				4FD6D4E8284E27040021F235 /* AppDelegate.swift in Sources */,
+				4E201AB42857623200BB1CFC /* EnunciadoView.swift in Sources */,
 				4FD6D4EA284E27040021F235 /* SceneDelegate.swift in Sources */,
+				4E201AB6285768B800BB1CFC /* ChallengeViewController.swift in Sources */,
 				4E912837284E33BC001BD10D /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,7 +527,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = V7GM8G5V55;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bubu/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -552,7 +556,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = V7GM8G5V55;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bubu/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
