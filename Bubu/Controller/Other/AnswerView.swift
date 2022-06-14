@@ -8,7 +8,7 @@
 import UIKit
 
 struct Answer{
-    var content:String
+    var content:Number
     var isTrue:Bool = false
 }
 
@@ -18,14 +18,13 @@ class AnswerView: UIView {
     
     private var model: [Answer] = []
     
-    
     lazy var listButton: [UIButton] = self.model.map { answer in
         let button = UIButton(frame: .zero)
         
-        button.setImage(UIImage(named: "Mapa"), for: .normal)
+        button.setImage(answer.content.image, for: .normal)
         
         let action = UIAction { _ in
-            print(answer)
+            print(answer.isTrue)
         }
         
         button.addAction(action, for: .primaryActionTriggered)
