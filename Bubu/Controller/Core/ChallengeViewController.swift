@@ -8,10 +8,15 @@
 import UIKit
 
 enum Operation: String{
-    case sum = "+"
-    case minus = "-"
-    case divison = "/"
-    case multiplication = "*"
+    
+    case sum = "sinalSoma"
+    case minus = "sinalMenos"
+    case divison = "sinalDivisao"
+    case multiplication = "sinalMulti"
+    
+    var image: UIImage{
+        return UIImage(named: self.rawValue) ?? UIImage()
+    }
 }
 
 enum Number: String{
@@ -24,6 +29,11 @@ enum Number: String{
     case seven = "7"
     case eight = "8"
     case nine = "9"
+    
+    var image: UIImage{
+        return UIImage(named: self.rawValue) ?? UIImage()
+    }
+    
 }
 
 
@@ -74,62 +84,50 @@ class ChallengeViewController: UIViewController{
     }
 }
 
-
 class ChallengePageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    
-    
     private var enunciadosModel: [Enunciado] = [
         Enunciado(numberLeft: .one, operation: .sum, numberRight: .eight, answer: [
-            Answer(content: "9", isTrue: true),
-            Answer(content: "7"),
-            Answer(content: "5")
+            Answer(content: .nine, isTrue: true),
+            Answer(content: .seven),
+            Answer(content: .five)
         ]),
         Enunciado(numberLeft: .one, operation: .sum, numberRight: .eight, answer: [
-            Answer(content: "9", isTrue: true),
-            Answer(content: "7"),
-            Answer(content: "5")
+            Answer(content: .eight, isTrue: true),
+            Answer(content: .four),
+            Answer(content: .five)
         ]),
         Enunciado(numberLeft: .one, operation: .sum, numberRight: .eight, answer: [
-            Answer(content: "9", isTrue: true),
-            Answer(content: "7"),
-            Answer(content: "5")
+            Answer(content: .one, isTrue: true),
+            Answer(content: .six),
+            Answer(content: .five)
         ])
     ]
-    
     lazy var enunciadosViewController: [UIViewController] = self.enunciadosModel.map({ enunciado in
         return ChallengeViewController(model: enunciado)
     })
-    
-    override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
+    override init(transitionStyle style: UIPageViewController.TransitionStyle,
+                  navigationOrientation: UIPageViewController.NavigationOrientation,
+                  options: [UIPageViewController.OptionsKey : Any]? = nil) {
         super.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options)
     }
-    
     convenience init(){
         self.init(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
-        
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         self.dataSource = self
         self.setViewControllers( [enunciadosViewController[0]], direction: .forward, animated: true, completion: nil)
     }
-    
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
         return enunciadosViewController[1]
     }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
         return enunciadosViewController[2]
     }
-
-
-
 }
