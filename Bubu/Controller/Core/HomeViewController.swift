@@ -8,64 +8,96 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    private let labelOne: UILabel = {
-        let label = UILabel()
-        label.text = "LabelOne"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemBlue
-        return label
-    }()
-    private let labelTwo: UILabel = {
-        let label = UILabel()
-        label.text = "LabelTwo"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemRed
-        return label
-    }()
     let scrollView: UIScrollView = {
         let scrollViewVar = UIScrollView()
         scrollViewVar.translatesAutoresizingMaskIntoConstraints = false
-        scrollViewVar.backgroundColor = .cyan
         return scrollViewVar
     }()
-    private let button1: UIButton = {
+    lazy var contentView: UIView = {
+        let view = UIView()
+//        view.backgroundColor = .red
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var button1: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-//        button.backgroundColor = .red
-        button.setImage(UIImage(named: "Mapa"), for: .normal)
+        button.setImage(UIImage(named: "starFace"), for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
     @objc func buttonAction() {
-        print("MAPA")
+        print("Star1")
     }
+    lazy var button2: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "starFace"), for: .normal)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        return button
+    }()
+    lazy var button3: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "starFace"), for: .normal)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        return button
+    }()
+    lazy var button4: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "starFace"), for: .normal)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        return button
+    }()
+    var stackView = UIStackView()
+    var images = [UIImageView]()
     override func viewDidLoad() {
-        let screenSize = UIScreen.main.bounds
         super.viewDidLoad()
-        let safeG = view.safeAreaLayoutGuide
-        let contentG = scrollView.contentLayoutGuide
+        images.append(UIImageView(image: UIImage(named: "stars")))
+        images[0].frame = CGRect(x: 0,
+                                 y: UIScreen.main.bounds.height*CGFloat(0),
+                                 width: view.frame.width,
+                                 height: view.frame.height)
+        images[0].contentMode = .scaleAspectFit
+        view.addSubview(images[0])
+        view.backgroundColor = UIColor(red: 0.482, green: 0.094, blue: 0.961, alpha: 1)
         view.addSubview(scrollView)
-        scrollView.addSubview(labelOne)
-//        scrollView.addSubview(labelTwo)
-        scrollView.addSubview(button1)
+//        scrollView.addSubview(contentView)
+        scrollView.addSubview(stackView)
+        stackView.addArrangedSubview(button1)
+        stackView.addArrangedSubview(button2)
+        stackView.addArrangedSubview(button3)
+        stackView.addArrangedSubview(button4)
+        stackView.axis = .vertical
+        stackView.alignment = .center
+
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: safeG.topAnchor, constant: 8.0),
-            scrollView.leadingAnchor.constraint(equalTo: safeG.leadingAnchor, constant: 8.0),
-            scrollView.trailingAnchor.constraint(equalTo: safeG.trailingAnchor, constant: -8.0),
-            scrollView.bottomAnchor.constraint(equalTo: safeG.bottomAnchor, constant: -8.0),
-            labelOne.topAnchor.constraint(equalTo: contentG.topAnchor, constant: 16.0),
-            labelOne.leadingAnchor.constraint(equalTo: contentG.leadingAnchor, constant: 16.0),
-            button1.leadingAnchor.constraint(equalTo: labelOne.trailingAnchor, constant: screenSize.width),
-            button1.topAnchor.constraint(equalTo: labelOne.topAnchor, constant: screenSize.height),
-            button1.trailingAnchor.constraint(equalTo: contentG.trailingAnchor, constant: -16.0),
-            button1.bottomAnchor.constraint(equalTo: contentG.bottomAnchor, constant: -16.0),
-            button1.heightAnchor.constraint(equalToConstant: CGFloat(55)),
-            button1.widthAnchor.constraint(equalToConstant: CGFloat(55))
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+//            scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            
+            button1.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50),
+            button1.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50),
+            
+            button2.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50),
+            button2.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50),
+
+            button3.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50),
+            button3.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50),
+
+            button4.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50),
+            button4.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50)
         ])
     }
 }
-/*    override func viewDidLayoutSubviews() {
- super.viewDidLayoutSubviews()
- label.frame =
- CGRect(x: 20, y: view.height - view.safeAreaInsets.bottom - 50, width: view.width-40, height: 50)
- }*/
