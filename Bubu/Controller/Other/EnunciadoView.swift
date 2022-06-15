@@ -9,51 +9,55 @@ import UIKit
 
 class EnunciadoView: UIView {
     
+    private var model:Enunciado?
     
-    
-    let numberViewLeft: UIImageView = UIImageView()
-    let numberViewRight: UIImageView = UIImageView()
-    let operationLabel = UILabel()
+    let numberViewLeft = UIImageView()
+    let numberViewRight = UIImageView()
+    let operationLabel = UIImageView()
     
     lazy var stackView = UIStackView(frame: .zero)
     
-    convenience init() {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    convenience init(model: Enunciado? = nil) {
+        
         self.init(frame: .zero)
-        
+        self.model = model
         backgroundColor = .systemGreen
-        
         self.addSubview(stackView)
-        
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = UIStackView.spacingUseSystem
         
-        self.numberViewLeft.image = UIImage(named: "Mapa")
-        self.numberViewLeft.contentMode = .scaleAspectFit
-        
-        self.stackView.addArrangedSubview(numberViewLeft)
-        
-        self.operationLabel.text = "+"
-        self.operationLabel.font = .systemFont(ofSize: 50)
-
+        if let model = self.model{
+            self.numberViewLeft.image = model.numberLeft.image
+            self.numberViewLeft.contentMode = .scaleAspectFit
             
-        self.operationLabel.textAlignment = .center
+            self.stackView.addArrangedSubview(numberViewLeft)
+            
+            self.operationLabel.image =  model.operation.image
+            self.operationLabel.contentMode = .scaleAspectFit
+            
+            self.stackView.addArrangedSubview(operationLabel)
+            
+            self.numberViewRight.image = model.numberRight.image
+            self.numberViewRight.contentMode = .scaleAspectFit
+            
+            self.stackView.addArrangedSubview(numberViewRight)
+            self.stackView.isLayoutMarginsRelativeArrangement = true
+        }
         
-        self.stackView.addArrangedSubview(operationLabel)
-        self.numberViewRight.image = UIImage(named: "Mapa")
-        self.numberViewRight.contentMode = .scaleAspectFit
-        
-        self.stackView.addArrangedSubview(numberViewRight)
-        self.stackView.isLayoutMarginsRelativeArrangement = true
+       
     
 
         self.stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
@@ -62,10 +66,10 @@ class EnunciadoView: UIView {
 
         
     }
+    
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
+
+   
     
     
 //    init(){
