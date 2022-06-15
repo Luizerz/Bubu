@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum LevelName:String{
+    case asteroide = "asteroideCard"
+    case estrela = "estrelaCard"
+    case nave = "naveCard"
+    case planeta = "planetaCard"
+}
 enum Operation: String{
     
     case sum = "sinalSoma"
@@ -20,6 +26,7 @@ enum Operation: String{
 }
 
 enum Number: String{
+    case zero = "0"
     case one = "1"
     case two = "2"
     case three = "3"
@@ -29,13 +36,40 @@ enum Number: String{
     case seven = "7"
     case eight = "8"
     case nine = "9"
-    
+        
     var image: UIImage{
+        //switch
         return UIImage(named: self.rawValue) ?? UIImage()
     }
+    var imageAsteroide:UIImage{
+        return UIImage(named: "asteroideCard"+self.rawValue) ?? UIImage()
+    }
+    var imageEstrela:UIImage{
+        return UIImage(named: "estrelaCard"+self.rawValue) ?? UIImage()
+    }
+    var imageNave:UIImage{
+        return UIImage(named: "naveCard"+self.rawValue) ?? UIImage()
+    }
+    var imagePlaneta:UIImage{
+        return UIImage(named: "planetaCard"+self.rawValue) ?? UIImage()
+    }
+    
+    
     
 }
 
+
+struct Level {
+    var name: LevelName
+    var enunciados: [Enunciado] {
+        get{
+            return self.enunciados
+        }
+        didSet{
+            
+        }
+    }
+}
 
 struct Enunciado{
     var numberLeft:Number
@@ -72,13 +106,13 @@ class ChallengeViewController: UIViewController{
         NSLayoutConstraint.activate([
             
             answer.topAnchor.constraint(equalTo: enunciado.bottomAnchor),
-            answer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            answer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10),
             answer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
             answer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
-            enunciado.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            enunciado.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            enunciado.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            answer.heightAnchor.constraint(equalTo: enunciado.heightAnchor, multiplier: 0.9),
+            enunciado.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            enunciado.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            enunciado.topAnchor.constraint(equalTo: view.topAnchor),
+            answer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
             enunciado.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)
             ])
     }
