@@ -47,7 +47,7 @@ struct Enunciado{
 class ChallengeViewController: UIViewController{
     
     private var model: Enunciado? = nil
-    lazy var enunciado = EnunciadoView()
+    lazy var enunciado = EnunciadoView(model: model)
     lazy var answer = AnswerView(answerModel: self.model?.answer)
     
     
