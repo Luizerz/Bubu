@@ -60,7 +60,7 @@ class EnunciadoView: UIView {
        
     
 
-        self.stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        self.stackView.layoutMargins = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 8
 
