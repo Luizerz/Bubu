@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E912837284E33BC001BD10D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E912836284E33BC001BD10D /* Extensions.swift */; };
+		4FA9501B2859047D009376A1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9501A2859047D009376A1 /* HomeView.swift */; };
 		4FD6D4E8284E27040021F235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6D4E7284E27040021F235 /* AppDelegate.swift */; };
 		4FD6D4EA284E27040021F235 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6D4E9284E27040021F235 /* SceneDelegate.swift */; };
 		4FD6D4EC284E27040021F235 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6D4EB284E27040021F235 /* HomeViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		4E912836284E33BC001BD10D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4FA9501A2859047D009376A1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4FD6D4E4284E27040021F235 /* Bubu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bubu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FD6D4E7284E27040021F235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FD6D4E9284E27040021F235 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				4FD6D4ED284E27040021F235 /* Main.storyboard */,
+				4FA9501A2859047D009376A1 /* HomeView.swift */,
 				4FD6D4F2284E27050021F235 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -345,6 +348,7 @@
 				4FD6D4EC284E27040021F235 /* HomeViewController.swift in Sources */,
 				4FF3C4722850DBB7004E3065 /* LevelButton.swift in Sources */,
 				4FD6D4E8284E27040021F235 /* AppDelegate.swift in Sources */,
+				4FA9501B2859047D009376A1 /* HomeView.swift in Sources */,
 				4FD6D4EA284E27040021F235 /* SceneDelegate.swift in Sources */,
 				4E912837284E33BC001BD10D /* Extensions.swift in Sources */,
 			);

@@ -10,18 +10,25 @@ import XCTest
 
 class BubuTests: XCTestCase {
 
-    override func setUpWithError() throws {
-    }
+    class HomeViewDelegateMock: HomeViewDelegate {
+        var sendImageWasCalled: Bool = false
 
-    override func tearDownWithError() throws {
-    }
-
-    func testExample() throws {
-    }
-
-    func testPerformanceExample() throws {
-        self.measure {
+        func sendImage(_ image: UIImage) {
+            sendImageWasCalled = true
         }
+    }
+
+    func testHomeViewButtonAction() {
+        // given
+        let mock = HomeViewDelegateMock()
+        let view = HomeView()
+        view.delegate = mock
+
+        // when
+        view.buttonAction(view.button1)
+
+        // then
+        XCTAssertTrue(mock.sendImageWasCalled)
     }
 
 }
