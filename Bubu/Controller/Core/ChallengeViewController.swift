@@ -7,104 +7,32 @@
 
 import UIKit
 
-enum LevelName:String{
-    case asteroide = "asteroideCard"
-    case estrela = "estrelaCard"
-    case nave = "naveCard"
-    case planeta = "planetaCard"
-}
-enum Operation: String{
-    
-    case sum = "sinalSoma"
-    case minus = "sinalMenos"
-    case divison = "sinalDivisao"
-    case multiplication = "sinalMulti"
-    
-    var image: UIImage{
-        return UIImage(named: self.rawValue) ?? UIImage()
-    }
-}
 
-enum Number: String{
-    case zero = "0"
-    case one = "1"
-    case two = "2"
-    case three = "3"
-    case four = "4"
-    case five = "5"
-    case six = "6"
-    case seven = "7"
-    case eight = "8"
-    case nine = "9"
-        
-    var image: UIImage{
-        //switch
-        return UIImage(named: self.rawValue) ?? UIImage()
-    }
-    var imageAsteroide:UIImage{
-        return UIImage(named: "asteroideCard"+self.rawValue) ?? UIImage()
-    }
-    var imageEstrela:UIImage{
-        return UIImage(named: "estrelaCard"+self.rawValue) ?? UIImage()
-    }
-    var imageNave:UIImage{
-        return UIImage(named: "naveCard"+self.rawValue) ?? UIImage()
-    }
-    var imagePlaneta:UIImage{
-        return UIImage(named: "planetaCard"+self.rawValue) ?? UIImage()
-    }
-    
-    
-    
-}
+class ChallengeViewController: UIViewController {
 
-
-struct Level {
-    var name: LevelName
-    var enunciados: [Enunciado] {
-        get{
-            return self.enunciados
-        }
-        didSet{
-            
-        }
-    }
-}
-
-struct Enunciado{
-    var numberLeft:Number
-    var operation:Operation
-    var numberRight:Number
-    var answer: [Answer]
-}
-
-class ChallengeViewController: UIViewController{
-    
-    private var model: Enunciado? = nil
+    private var model: Enunciado?
     lazy var enunciado = EnunciadoView(model: model)
-    lazy var answer = AnswerView(answerModel: self.model?.answer)
-    
-    
+    lazy var answer = AnswerView(answerModel: self.model?.answers)
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
-    convenience init(model:Enunciado){
+    convenience init(model: Enunciado) {
         self.init(nibName: nil, bundle: nil)
         self.model = model
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(enunciado)
         view.addSubview(answer)
         NSLayoutConstraint.activate([
-            
+
             answer.topAnchor.constraint(equalTo: enunciado.bottomAnchor),
             answer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10),
             answer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
@@ -119,32 +47,20 @@ class ChallengeViewController: UIViewController{
 }
 
 class ChallengePageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    private var enunciadosModel: [Enunciado] = [
-        Enunciado(numberLeft: .one, operation: .sum, numberRight: .eight, answer: [
-            Answer(content: .nine, isTrue: true),
-            Answer(content: .seven),
-            Answer(content: .five)
-        ]),
-        Enunciado(numberLeft: .one, operation: .sum, numberRight: .eight, answer: [
-            Answer(content: .eight, isTrue: true),
-            Answer(content: .four),
-            Answer(content: .five)
-        ]),
-        Enunciado(numberLeft: .one, operation: .sum, numberRight: .eight, answer: [
-            Answer(content: .one, isTrue: true),
-            Answer(content: .six),
-            Answer(content: .five)
-        ])
-    ]
+
+    private lazy var enunciadosModel = LevelModel.EXAMPLE.filter {$0.content == .estrela}.reduce([]) { $0 + $1.enunciados
+    }
+
     lazy var enunciadosViewController: [UIViewController] = self.enunciadosModel.map({ enunciado in
         return ChallengeViewController(model: enunciado)
     })
+
     override init(transitionStyle style: UIPageViewController.TransitionStyle,
                   navigationOrientation: UIPageViewController.NavigationOrientation,
-                  options: [UIPageViewController.OptionsKey : Any]? = nil) {
+                  options: [UIPageViewController.OptionsKey: Any]? = nil) {
         super.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options)
     }
-    convenience init(){
+    convenience init() {
         self.init(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
     }
     required init?(coder: NSCoder) {

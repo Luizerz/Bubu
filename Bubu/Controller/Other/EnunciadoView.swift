@@ -8,21 +8,15 @@
 import UIKit
 
 class EnunciadoView: UIView {
-    
-    private var model:Enunciado?
-    
+    private var model: Enunciado?
     let numberViewLeft = UIImageView()
     let numberViewRight = UIImageView()
     let operationLabel = UIImageView()
-    
     lazy var stackView = UIStackView(frame: .zero)
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
     convenience init(model: Enunciado? = nil) {
-        
         self.init(frame: .zero)
         self.model = model
         backgroundColor = .systemGreen
@@ -34,44 +28,27 @@ class EnunciadoView: UIView {
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-        
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = UIStackView.spacingUseSystem
-        
-        if let model = self.model{
-            self.numberViewLeft.image = model.numberLeft.image
+        if let model = self.model {
+            self.numberViewLeft.image = model.numberLeftImage
             self.numberViewLeft.contentMode = .scaleAspectFit
-            
             self.stackView.addArrangedSubview(numberViewLeft)
-            
-            self.operationLabel.image =  model.operation.image
+            self.operationLabel.image =  model.operationImage
             self.operationLabel.contentMode = .scaleAspectFit
-            
             self.stackView.addArrangedSubview(operationLabel)
-            
-            self.numberViewRight.image = model.numberRight.image
+            self.numberViewRight.image = model.numberRightImage
             self.numberViewRight.contentMode = .scaleAspectFit
-            
             self.stackView.addArrangedSubview(numberViewRight)
             self.stackView.isLayoutMarginsRelativeArrangement = true
         }
-        
-       
-    
-
-        self.stackView.layoutMargins = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        self.stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 8
 
-        
     }
-    
 
-
-   
-    
-    
 //    init(){
 //        super.init(arrangedSubviews: )
 //        self.axis = .horizontal
@@ -81,13 +58,7 @@ class EnunciadoView: UIView {
 //
 
 //    }
-    
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
-    
-
 }
