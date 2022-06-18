@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ChallengeViewController: UIViewController {
 
     private var model: Enunciado?
@@ -33,13 +34,13 @@ class ChallengeViewController: UIViewController {
         NSLayoutConstraint.activate([
 
             answer.topAnchor.constraint(equalTo: enunciado.bottomAnchor),
-            answer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            answer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10),
             answer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
             answer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
-            enunciado.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            enunciado.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            enunciado.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            answer.heightAnchor.constraint(equalTo: enunciado.heightAnchor, multiplier: 0.9),
+            enunciado.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            enunciado.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            enunciado.topAnchor.constraint(equalTo: view.topAnchor),
+            answer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
             enunciado.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)
             ])
     }

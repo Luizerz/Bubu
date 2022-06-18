@@ -22,6 +22,9 @@ class AnswerView: UIView {
         button.addAction(action, for: .primaryActionTriggered)
         button.layoutIfNeeded()
         button.subviews.first?.contentMode = .scaleAspectFit
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.systemGreen.cgColor
+        button.layer.cornerRadius = 8.0
         return button
     }
 
