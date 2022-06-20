@@ -16,7 +16,7 @@ struct Enunciado {
 
     var operationImage: UIImage {
         get {
-            return self.operationImage
+            return self.operation.image
         }
     }
 
@@ -28,26 +28,25 @@ struct Enunciado {
 
     var answers: [Answer] {
         get {
-            return self.answers.map({
+            return self.answerArray.map({
                 Answer(content: $0.content, level: self.level, isTrue: $0.isTrue)
             })
         }
 
-        set {
-            answers = newValue
-        }
     }
-
+    
+  
     private var operation: Operation
     private var numberLeft: Number
     private var numberRight: Number
     private var level: Level = .nolevel
+    private var answerArray: [Answer]
 
     init(numberLeft: Number, operation: Operation, numberRight: Number, answers: [Answer]) {
         self.numberLeft = numberLeft
         self.operation = operation
         self.numberRight = numberLeft
-        self.answers = answers
+        self.answerArray = answers
     }
 
     init(level: Level, enunciado: Enunciado) {

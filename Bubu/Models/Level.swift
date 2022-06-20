@@ -13,7 +13,7 @@ struct LevelModel {
     init(level: Level, enunciados: [Enunciado]) {
         self.content = level
         self.enunciados = enunciados
-        self.enunciados.map({
+        self.enunciados = self.enunciados.map({
             Enunciado(level: self.content, enunciado: $0)
         })
     }
