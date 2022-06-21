@@ -10,7 +10,7 @@ import UIKit
 
 class ChallengeViewController: UIViewController {
 
-    private var model: Enunciado?
+    var model: Enunciado?
     lazy var enunciado = EnunciadoView(model: model)
     lazy var answer = AnswerView(answerModel: self.model?.answers)
 
@@ -47,6 +47,7 @@ class ChallengeViewController: UIViewController {
 }
 
 class ChallengePageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+
 
     private lazy var enunciadosModel = LevelModel.EXAMPLE.filter {$0.content == .estrela}.reduce([]) { $0 + $1.enunciados
     }
