@@ -6,6 +6,7 @@
 //
 import UIKit
 
+
 enum Level: String {
     case nave = "nave"
     case planeta = "planeta"
@@ -25,6 +26,7 @@ enum Operation: String {
     }
 }
 
+
 enum Number: String {
 
     case zero = "0"
@@ -37,8 +39,17 @@ enum Number: String {
     case seven = "7"
     case eight = "8"
     case nine = "9"
+    
     func image(level: Level) -> UIImage {
-        return UIImage(named: "\(self.rawValue)Cards\(level.rawValue)" ) ?? UIImage(named: "\(self.rawValue)")!
+        
+        if(!level.rawValue.isEmpty){
+            return UIImage(named: "\(self.rawValue)Cards\(level.rawValue)") ?? UIImage(named: "\(self.rawValue)")!
+        }else{
+            return UIImage(named: "\(self.rawValue)")!
+        }
     }
 
 }
+
+
+
