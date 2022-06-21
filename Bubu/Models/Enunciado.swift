@@ -40,13 +40,13 @@ struct Enunciado {
     init(numberLeft: Number, operation: Operation, numberRight: Number, answers: [Answer]) {
         self.numberLeft = numberLeft
         self.operation = operation
-        self.numberRight = numberLeft
+        self.numberRight = numberRight
         self.answers = answers
         self.level = .nolevel
     }
 
     init(level: Level, enunciado: Enunciado) {
-        self = enunciado
+        self = enunciado.self
         print(self.numberLeft.rawValue)
         self.level = level
     }

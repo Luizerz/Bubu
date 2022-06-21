@@ -10,11 +10,12 @@ import UIKit
 struct LevelModel {
     var content: Level
     var enunciados: [Enunciado]
+    
     init(level: Level, enunciados: [Enunciado]) {
         self.content = level
         self.enunciados = enunciados
         self.enunciados = self.enunciados.map({
-            Enunciado(level: self.content, enunciado: $0)
+            return Enunciado(level: self.content, enunciado: $0)
         })
     }
 

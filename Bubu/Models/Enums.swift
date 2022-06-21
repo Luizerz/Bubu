@@ -41,12 +41,9 @@ enum Number: String {
     case nine = "9"
     
     func image(level: Level) -> UIImage {
+        print("\(level.rawValue)Card\(self.rawValue)")
+        return UIImage(named: "\(level.rawValue)Card\(self.rawValue)") ??  UIImage(named: "\(self.rawValue)")!
         
-        if(!level.rawValue.isEmpty){
-            return UIImage(named: "\(self.rawValue)Cards\(level.rawValue)") ?? UIImage(named: "\(self.rawValue)")!
-        }else{
-            return UIImage(named: "\(self.rawValue)")!
-        }
     }
 
 }
