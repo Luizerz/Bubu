@@ -9,11 +9,10 @@ import UIKit
 
 struct Answer {
     var content: Number
-    var level: Level?
 
     var contentImage: UIImage {
         get {
-            return content.image(level: self.level ?? .estrela)
+            return content.image(level: .nolevel)
         }
     }
     var isTrue: Bool = false
