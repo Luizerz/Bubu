@@ -8,11 +8,12 @@
 import UIKit
 
 
-class ChallengeViewController: UIViewController {
-
+class ChallengeViewController: UIViewController{
+   
     var model: Enunciado?
     lazy var enunciado = EnunciadoView(model: model)
-    lazy var answer = AnswerView(answerModel: self.model?.answers)
+    lazy var answer = AnswerView(answerModel: self.model?.answers, handler: self)
+    var delegate: AnswerDelegate?
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -21,13 +22,17 @@ class ChallengeViewController: UIViewController {
         self.init(nibName: nil, bundle: nil)
         self.model = model
     }
-
+    
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        answer.delegate = self
+        
         view.backgroundColor = .white
         view.addSubview(enunciado)
         view.addSubview(answer)
@@ -42,13 +47,26 @@ class ChallengeViewController: UIViewController {
             enunciado.topAnchor.constraint(equalTo: view.topAnchor),
             answer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
             enunciado.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)
-            ])
+        ])
     }
+}
+
+extension ChallengeViewController: AnswerDelegate {
+    func buttonWasTapped(correctAnswer: Bool) {
+        if correctAnswer {
+            print("YAY", index)
+      
+        } else {
+            print("OH NO")
+        }
+    }
+    
 }
 
 class ChallengePageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
-
+    
+    
     private lazy var enunciadosModel = LevelModel.EXAMPLE.filter {$0.content == .estrela}.reduce([]) { $0 + $1.enunciados
     }
 
@@ -72,13 +90,16 @@ class ChallengePageViewController: UIPageViewController, UIPageViewControllerDat
         self.delegate = self
         self.dataSource = self
         self.setViewControllers( [enunciadosViewController[0]], direction: .forward, animated: true, completion: nil)
+        
     }
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return enunciadosViewController[1]
+       return nil
+        // return enunciadosViewController[1]
     }
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return enunciadosViewController[2]
+        return nil
+        //return enunciadosViewController[2]
     }
 }

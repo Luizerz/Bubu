@@ -8,15 +8,21 @@
 import UIKit
 
 class AnswerView: UIView {
-
+    
+    weak var delegate: AnswerDelegate?
+    
     private var model: [Answer] = []
+    
     lazy var listButton: [UIButton] = self.model.map { answer in
+        
         let button = UIButton(frame: .zero)
 
         button.setImage(answer.contentImage, for: .normal)
 
-        let action = UIAction { _ in
-            print(answer.isTrue)
+        let action = UIAction { [weak self] _ in // Estudar ARC, Retain Cycles, Memory Leaks
+            button.layer.backgroundColor = answer.isTrue ? UIColor.systemGreen.cgColor: UIColor.systemRed.cgColor
+            let arrayPosition = answer
+            self?.delegate?.buttonWasTapped(correctAnswer: answer.isTrue)
         }
 
         button.addAction(action, for: .primaryActionTriggered)
@@ -25,13 +31,19 @@ class AnswerView: UIView {
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.systemGreen.cgColor
         button.layer.cornerRadius = 8.0
+    
         return button
     }
 
     lazy var stackView = UIStackView(arrangedSubviews: listButton)
+    
+    
 
-    convenience init(answerModel: [Answer]? = nil) {
+    convenience init(answerModel: [Answer]? = nil, handler: ChallengeViewController) {
+        
+        
         self.init(frame: .zero)
+//        handler.delegate = self
 
         self.model = answerModel ?? []
 
@@ -61,6 +73,7 @@ class AnswerView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
     }
 
 //    init(){
