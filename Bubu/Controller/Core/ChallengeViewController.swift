@@ -7,9 +7,8 @@
 
 import UIKit
 
+class ChallengeViewController: UIViewController {
 
-class ChallengeViewController: UIViewController{
-   
     var model: Enunciado?
     lazy var enunciado = EnunciadoView(model: model)
     lazy var answer = AnswerView(answerModel: self.model?.answers, handler: self)
@@ -22,17 +21,14 @@ class ChallengeViewController: UIViewController{
         self.init(nibName: nil, bundle: nil)
         self.model = model
     }
-    
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        answer.delegate = self
-        
+
         view.backgroundColor = .white
         view.addSubview(enunciado)
         view.addSubview(answer)
@@ -51,27 +47,16 @@ class ChallengeViewController: UIViewController{
     }
 }
 
-extension ChallengeViewController: AnswerDelegate {
-    func buttonWasTapped(correctAnswer: Bool) {
-        if correctAnswer {
-            print("YAY", index)
-      
-        } else {
-            print("OH NO")
-        }
-    }
-    
-}
-
 class ChallengePageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
-    
-    
-    private lazy var enunciadosModel = LevelModel.EXAMPLE.filter {$0.content == .estrela}.reduce([]) { $0 + $1.enunciados
-    }
+    private lazy var enunciadosModel = LevelModel.EXAMPLE
+        .filter {$0.content == .estrela }
+        .reduce([]) { $0 + $1.enunciados }
 
     lazy var enunciadosViewController: [UIViewController] = self.enunciadosModel.map({ enunciado in
-        return ChallengeViewController(model: enunciado)
+        let challenge = ChallengeViewController(model: enunciado)
+        challenge.answer.delegate = self
+        return challenge
     })
 
     override init(transitionStyle style: UIPageViewController.TransitionStyle,
@@ -90,7 +75,6 @@ class ChallengePageViewController: UIPageViewController, UIPageViewControllerDat
         self.delegate = self
         self.dataSource = self
         self.setViewControllers( [enunciadosViewController[0]], direction: .forward, animated: true, completion: nil)
-        
     }
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -100,6 +84,16 @@ class ChallengePageViewController: UIPageViewController, UIPageViewControllerDat
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
         return nil
-        //return enunciadosViewController[2]
+        // return enunciadosViewController[2]
+    }
+}
+
+extension ChallengePageViewController: AnswerDelegate {
+    func buttonWasTapped(correctAnswer: Bool) {
+        if correctAnswer {
+            print("YAY", index)
+        } else {
+            print("OH NO")
+        }
     }
 }
