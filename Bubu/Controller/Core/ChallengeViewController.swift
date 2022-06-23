@@ -95,6 +95,7 @@ extension ChallengePageViewController: AnswerDelegate {
         if let index = enunciadosModel.firstIndex(where: {$0.answers == answers}), index + 1 < enunciadosModel.count{
             if correctAnswer {
                 print("YAY")
+                
             } else {
                 print("OH NO")
             }
