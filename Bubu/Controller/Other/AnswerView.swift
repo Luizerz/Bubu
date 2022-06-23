@@ -22,7 +22,7 @@ class AnswerView: UIView {
         let action = UIAction { [weak self] _ in // Estudar ARC, Retain Cycles, Memory Leaks
             button.layer.backgroundColor = answer.isTrue ? UIColor.systemGreen.cgColor: UIColor.systemRed.cgColor
             let arrayPosition = answer
-            self?.delegate?.buttonWasTapped(correctAnswer: answer.isTrue)
+            self?.delegate?.buttonWasTapped(correctAnswer: answer.isTrue, answers: self?.model ?? [])
         }
 
         button.addAction(action, for: .primaryActionTriggered)
