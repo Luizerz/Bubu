@@ -127,11 +127,11 @@ extension ChallengePageViewController: AnswerDelegate {
             
         }
         
-        enunciadosViewController = enunciadosViewController.map { e in
-            let challenge = ChallengeViewController(model: e.model)
+        self.enunciadosViewController = enunciadosModel.map({ enunciado in
+            let challenge = ChallengeViewController(model: enunciado)
             challenge.answer.delegate = self
             return challenge
-        }
+        })
     
         
     }
