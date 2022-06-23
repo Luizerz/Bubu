@@ -30,12 +30,14 @@ struct LevelModel {
             Enunciado(numberLeft: .six, operation: .minus, numberRight: .one, answers: [
                 Answer(content: .one),
                 Answer(content: .five, isTrue: true),
-                Answer(content: .four)
+                Answer(content: .four),
+                Answer(content: .eight)
             ]),
             Enunciado(numberLeft: .six, operation: .minus, numberRight: .one, answers: [
                 Answer(content: .one),
                 Answer(content: .five, isTrue: true),
-                Answer(content: .four)
+                Answer(content: .four),
+                Answer(content: .eight)
             ])
         ]),
         LevelModel(level: .planeta, enunciados: [

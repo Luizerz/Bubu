@@ -8,7 +8,7 @@
 import UIKit
 
 class ChallengeViewController: UIViewController {
-
+   
     var model: Enunciado?
     lazy var enunciado = EnunciadoView(model: model)
     lazy var answer = AnswerView(answerModel: self.model?.answers, handler: self)
@@ -48,7 +48,8 @@ class ChallengeViewController: UIViewController {
 }
 
 class ChallengePageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-
+    
+    var count: Int = 0
     private lazy var enunciadosModel = LevelModel.EXAMPLE
         .filter {$0.content == .estrela }
         .reduce([]) { $0 + $1.enunciados }
@@ -90,18 +91,46 @@ class ChallengePageViewController: UIPageViewController, UIPageViewControllerDat
 
 extension ChallengePageViewController: AnswerDelegate {
     
+    
+    
     func buttonWasTapped(correctAnswer: Bool, answers: [Answer]) {
         
+        
+        
         if let index = enunciadosModel.firstIndex(where: {$0.answers == answers}), index + 1 < enunciadosModel.count{
+            
             if correctAnswer {
-                print("YAY")
-                
+                count = 0
+                self.setViewControllers( [enunciadosViewController[index+1]], direction: .forward, animated: true, completion: nil)
             } else {
-                print("OH NO")
+                count+=1
             }
-            self.setViewControllers( [enunciadosViewController[index+1]], direction: .forward, animated: true, completion: nil)
+            
+            if(count >= 2){
+                count = 0
+                self.setViewControllers( [enunciadosViewController[index+1]], direction: .forward, animated: true, completion: nil)
+            }
+            
         }else{
-            self.setViewControllers( [enunciadosViewController[0]], direction: .forward, animated: true, completion: nil)
+            
+            if correctAnswer {
+                count = 0
+                self.setViewControllers( [enunciadosViewController[0]], direction: .forward, animated: true, completion: nil)
+            } else {
+                count+=1
+            }
+            
+            if(count >= 2){
+                count = 0
+                self.setViewControllers( [enunciadosViewController[0]], direction: .forward, animated: true, completion: nil)
+            }
+            
+        }
+        
+        enunciadosViewController = enunciadosViewController.map { e in
+            let challenge = ChallengeViewController(model: e.model)
+            challenge.answer.delegate = self
+            return challenge
         }
     
         

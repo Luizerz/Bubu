@@ -31,8 +31,6 @@ struct Enunciado{
     
     var answers:[Answer]
     
-    
-    
     private var operation: Operation
     private var numberLeft: Number
     private var numberRight: Number

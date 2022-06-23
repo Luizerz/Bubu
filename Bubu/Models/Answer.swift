@@ -7,11 +7,6 @@
 
 import UIKit
 
-
-
-
-
-
 struct Answer: Equatable {
    
     

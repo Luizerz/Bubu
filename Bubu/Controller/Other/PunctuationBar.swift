@@ -11,11 +11,20 @@ class PunctuationBar: UIView {
 
     
     
-    convenience init(){
+    convenience init(text: String ){
         self.init(frame: .zero)
-        let stack = UIStackView(arrangedSubviews: [
-                UIImageView(image: Image)
+        
+        let label = UILabel(frame: .zero)
+        label.text = text
+        label.translatesAutoresizingMaskIntoConstraints = true
+        
+        
+        
+        let stackPonto = UIStackView(arrangedSubviews: [
+                UIImageView(image: UIImage(systemName: "heart.fill") ),
+                label
         ])
+        stackPonto.translatesAutoresizingMaskIntoConstraints = true
         
     }
     
