@@ -26,7 +26,7 @@ class HomeView: UIView {
     lazy var button1: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "estrela"), for: .normal)
+        button.setImage(UIImage(named: "botaoMais"), for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
@@ -34,7 +34,7 @@ class HomeView: UIView {
     lazy var button2: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "planeta"), for: .normal)
+        button.setImage(UIImage(named: "botaoMenos"), for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
@@ -42,7 +42,7 @@ class HomeView: UIView {
     lazy var button3: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "asteroide"), for: .normal)
+        button.setImage(UIImage(named: "botaoMulti"), for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
@@ -50,7 +50,7 @@ class HomeView: UIView {
     lazy var button4: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "nave"), for: .normal)
+        button.setImage(UIImage(named: "botaoDivid"), for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
@@ -66,18 +66,18 @@ class HomeView: UIView {
         return stackView
     }()
 // tirar essa images da HomeView, pois não é recomendado fazer isso diretamente.
-    lazy var images: [UIImageView] = {
-        var images = [UIImageView]()
-        images.append(UIImageView(image: UIImage(named: "stars")))
-        images[0].frame = CGRect(
-            x: 0,
-            y: UIScreen.main.bounds.height*CGFloat(0),
-            width: self.frame.width,
-            height: self.frame.height
-        )
-        images[0].contentMode = .scaleAspectFit
-        return images
-    }()
+//    lazy var images: [UIImageView] = {
+//        var images = [UIImageView]()
+//        images.append(UIImageView(image: UIImage(named: "stars")))
+//        images[0].frame = CGRect(
+//            x: 0,
+//            y: UIScreen.main.bounds.height*CGFloat(0),
+//            width: self.frame.width,
+//            height: self.frame.height
+//        )
+//        images[0].contentMode = .scaleAspectFit
+//        return images
+//    }()
 
     // MARK: - Action
     @objc func buttonAction(_ sender: UIButton) {
@@ -94,7 +94,7 @@ class HomeView: UIView {
 
     func setupLayout() {
 
-        self.addSubview(images[0])
+//        self.addSubview(images[0])
         self.addSubview(scrollView)
         scrollView.addSubview(stackView)
 

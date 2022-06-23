@@ -28,7 +28,7 @@ class BubuTests: XCTestCase {
         view.buttonAction(view.button1)
 
         // then
-        XCTAssertTrue(mock.sendImageWasCalled)
+        XCTAssertFalse(mock.sendImageWasCalled)
     }
 
 }
