@@ -8,9 +8,9 @@ import UIKit
 
 
 enum Level: String {
-    case nave = "nave"
+    case foguete = "foguete"
     case planeta = "planeta"
-    case asteroide = "asteroide"
+    case cometa = "cometa"
     case estrela = "estrela"
     case nolevel = ""
 }
@@ -19,7 +19,7 @@ enum Operation: String {
 
     case sum = "sinalSoma"
     case minus = "sinalMenos"
-    case divison = "sinalDivisao"
+    case divison = "sinalDivid"
     case multiplication = "sinalMulti"
     var image: UIImage {
         return UIImage(named: self.rawValue) ?? UIImage()
