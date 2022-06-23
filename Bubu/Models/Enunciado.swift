@@ -7,7 +7,9 @@
 
 import UIKit
 
-struct Enunciado {
+struct Enunciado{
+   
+    var id: String
     
     var numberLeftImage: UIImage {
         get {
@@ -28,8 +30,6 @@ struct Enunciado {
     }
     
     var answers:[Answer]
-
-    
   
     private var operation: Operation
     private var numberLeft: Number
@@ -38,6 +38,7 @@ struct Enunciado {
     
 
     init(numberLeft: Number, operation: Operation, numberRight: Number, answers: [Answer]) {
+        self.id = UUID().uuidString
         self.numberLeft = numberLeft
         self.operation = operation
         self.numberRight = numberRight

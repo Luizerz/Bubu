@@ -7,7 +7,16 @@
 
 import UIKit
 
-struct Answer {
+
+
+
+
+
+struct Answer: Equatable {
+   
+    
+    var id: String = UUID().uuidString
+    
     var content: Number
 
     var contentImage: UIImage {
@@ -16,4 +25,10 @@ struct Answer {
         }
     }
     var isTrue: Bool = false
+    
+    static func == (lhs: Answer, rhs: Answer) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    
 }
