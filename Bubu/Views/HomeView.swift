@@ -26,7 +26,7 @@ class HomeView: UIView {
     lazy var button1: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "starFace"), for: .normal)
+        button.setImage(UIImage(named: "estrela"), for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
@@ -34,7 +34,7 @@ class HomeView: UIView {
     lazy var button2: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        button.setImage(UIImage(named: "planeta"), for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
@@ -42,7 +42,7 @@ class HomeView: UIView {
     lazy var button3: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        button.setImage(UIImage(named: "asteroide"), for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
@@ -50,7 +50,7 @@ class HomeView: UIView {
     lazy var button4: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "triangle.fill"), for: .normal)
+        button.setImage(UIImage(named: "nave"), for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
@@ -65,7 +65,7 @@ class HomeView: UIView {
         stackView.alignment = .center
         return stackView
     }()
-
+// tirar essa images da HomeView, pois não é recomendado fazer isso diretamente.
     lazy var images: [UIImageView] = {
         var images = [UIImageView]()
         images.append(UIImageView(image: UIImage(named: "stars")))
@@ -99,9 +99,11 @@ class HomeView: UIView {
         scrollView.addSubview(stackView)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
-
+        stackView.spacing = 35
+        stackView.distribution = .fillEqually
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+
+            scrollView.topAnchor.constraint(equalTo: self.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
@@ -112,17 +114,17 @@ class HomeView: UIView {
             stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            button1.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.50),
-            button1.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.50),
+            button1.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.35),
+            button1.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.35),
 
-            button2.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.50),
-            button2.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.50),
+            button2.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.35),
+            button2.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.35),
 
-            button3.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.50),
-            button3.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.50),
+            button3.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.35),
+            button3.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.35),
 
-            button4.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.50),
-            button4.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.50)
+            button4.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.35),
+            button4.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.35)
         ])
     }
 
