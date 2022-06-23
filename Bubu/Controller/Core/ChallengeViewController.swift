@@ -89,11 +89,12 @@ class ChallengePageViewController: UIPageViewController, UIPageViewControllerDat
 }
 
 extension ChallengePageViewController: AnswerDelegate {
-    func buttonWasTapped(correctAnswer: Bool) {
+    func buttonWasTapped(correctAnswer: Bool, answers: [Answer]) {
         if correctAnswer {
-            print("YAY", index)
+            print("YAY")
         } else {
             print("OH NO")
         }
     }
+
 }

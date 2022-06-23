@@ -11,5 +11,5 @@ import UIKit
 
 protocol AnswerDelegate: AnyObject {
 //    var isAnsweredCorrectly:UIAction
-    func buttonWasTapped(correctAnswer: Bool)
+    func buttonWasTapped(correctAnswer: Bool, answers: [Answer])
 }
