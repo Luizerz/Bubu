@@ -89,12 +89,21 @@ class ChallengePageViewController: UIPageViewController, UIPageViewControllerDat
 }
 
 extension ChallengePageViewController: AnswerDelegate {
+    
     func buttonWasTapped(correctAnswer: Bool, answers: [Answer]) {
-        if correctAnswer {
-            print("YAY")
-        } else {
-            print("OH NO")
+        
+        if let index = enunciadosModel.firstIndex(where: {$0.answers == answers}), index + 1 < enunciadosModel.count{
+            if correctAnswer {
+                print("YAY")
+            } else {
+                print("OH NO")
+            }
+            self.setViewControllers( [enunciadosViewController[index+1]], direction: .forward, animated: true, completion: nil)
+        }else{
+            self.setViewControllers( [enunciadosViewController[0]], direction: .forward, animated: true, completion: nil)
         }
+    
+        
     }
 
 }
