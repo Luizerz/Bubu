@@ -27,17 +27,17 @@ struct LevelModel {
                 Answer(content: .four),
                 Answer(content: .eight)
             ]),
-            Enunciado(numberLeft: .six, operation: .minus, numberRight: .one, answers: [
+            Enunciado(numberLeft: .five, operation: .multiplication, numberRight: .one, answers: [
                 Answer(content: .one),
                 Answer(content: .five, isTrue: true),
                 Answer(content: .four),
                 Answer(content: .eight)
             ]),
-            Enunciado(numberLeft: .six, operation: .minus, numberRight: .one, answers: [
+            Enunciado(numberLeft: .four, operation: .sum, numberRight: .three, answers: [
                 Answer(content: .one),
-                Answer(content: .five, isTrue: true),
+                Answer(content: .five),
                 Answer(content: .four),
-                Answer(content: .eight)
+                Answer(content: .seven, isTrue: true)
             ])
         ]),
         LevelModel(level: .planeta, enunciados: [
