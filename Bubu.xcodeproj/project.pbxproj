@@ -103,8 +103,6 @@
 		4E201AB22857621000BB1CFC /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				4E201AB32857623200BB1CFC /* EnunciadoView.swift */,
-				4E201AB72858A6C000BB1CFC /* AnswerView.swift */,
 				4E3604AA2864A1B200031F2D /* PunctuationBar.swift */,
 			);
 			path = Other;
@@ -133,6 +131,8 @@
 			children = (
 				4FD6D4ED284E27040021F235 /* Main.storyboard */,
 				4FA9501A2859047D009376A1 /* HomeView.swift */,
+				4E201AB32857623200BB1CFC /* EnunciadoView.swift */,
+				4E201AB72858A6C000BB1CFC /* AnswerView.swift */,
 				4FD6D4F2284E27050021F235 /* LaunchScreen.storyboard */,
 			);
 			path = Views;

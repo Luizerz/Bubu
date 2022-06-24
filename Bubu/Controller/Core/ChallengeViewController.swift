@@ -75,7 +75,7 @@ class ChallengePageViewController: UIPageViewController, UIPageViewControllerDat
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Trdte"
+//        self.navigationItem.title = ""
 
         self.delegate = self
         self.dataSource = self

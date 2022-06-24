@@ -52,8 +52,9 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeViewDelegate {
 
-    func sendImage(_ image: UIImage) {
-        imagesThatWereTapped.append(image)
+    func sendImage(isTapped: Bool) {
+        if isTapped {
+            navigationController?.show(ChallengePageViewController(), sender: self)
+        }
     }
-
 }

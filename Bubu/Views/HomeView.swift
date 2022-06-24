@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeViewDelegate: AnyObject {
-    func sendImage(_ image: UIImage)
+    func sendImage(isTapped: Bool)
 }
 
 class HomeView: UIView {
@@ -83,12 +83,12 @@ class HomeView: UIView {
     @objc func buttonAction(_ sender: UIButton) {
         guard let image = sender.image(for: .normal) else { return }
         print(image)
-        delegate.sendImage(image)
+        delegate.sendImage(isTapped: true)
     }
 
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        backgroundColor = UIColor(red: 0.482, green: 0.094, blue: 0.961, alpha: 1)
+        backgroundColor = UIColor(red: 0.33, green: 0.93, blue: 0.61, alpha: 1.00)
         setupLayout()
     }
 
