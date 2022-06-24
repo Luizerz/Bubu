@@ -8,64 +8,52 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    private let labelOne: UILabel = {
-        let label = UILabel()
-        label.text = "LabelOne"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemBlue
-        return label
-    }()
-    private let labelTwo: UILabel = {
-        let label = UILabel()
-        label.text = "LabelTwo"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemRed
-        return label
-    }()
-    let scrollView: UIScrollView = {
-        let scrollViewVar = UIScrollView()
-        scrollViewVar.translatesAutoresizingMaskIntoConstraints = false
-        scrollViewVar.backgroundColor = .cyan
-        return scrollViewVar
-    }()
-    private let button1: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.backgroundColor = .red
-        button.setImage(UIImage(named: "Mapa"), for: .normal)
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        return button
-    }()
-    @objc func buttonAction() {
-        print("MAPA")
-    }
-    override func viewDidLoad() {
-        let screenSize = UIScreen.main.bounds
-        super.viewDidLoad()
-        let safeG = view.safeAreaLayoutGuide
-        let contentG = scrollView.contentLayoutGuide
-        view.addSubview(scrollView)
-        scrollView.addSubview(labelOne)
-//        scrollView.addSubview(labelTwo)
-        scrollView.addSubview(button1)
+
+    let homeView: HomeView = HomeView(frame: UIScreen.main.bounds)
+
+    var imagesThatWereTapped: [UIImage] = []
+
+    // MARK: - Life Cycle
+    override func loadView() {
+        super.loadView()
+        homeView.delegate = self
+//        self.view = homeView
+        self.view.addSubview(homeView)
+        homeView.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(red: 0.482, green: 0.094, blue: 0.961, alpha: 1)
+
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: safeG.topAnchor, constant: 8.0),
-            scrollView.leadingAnchor.constraint(equalTo: safeG.leadingAnchor, constant: 8.0),
-            scrollView.trailingAnchor.constraint(equalTo: safeG.trailingAnchor, constant: -8.0),
-            scrollView.bottomAnchor.constraint(equalTo: safeG.bottomAnchor, constant: -8.0),
-            labelOne.topAnchor.constraint(equalTo: contentG.topAnchor, constant: 16.0),
-            labelOne.leadingAnchor.constraint(equalTo: contentG.leadingAnchor, constant: 16.0),
-            button1.leadingAnchor.constraint(equalTo: labelOne.trailingAnchor, constant: screenSize.width),
-            button1.topAnchor.constraint(equalTo: labelOne.topAnchor, constant: screenSize.height),
-            button1.trailingAnchor.constraint(equalTo: contentG.trailingAnchor, constant: -16.0),
-            button1.bottomAnchor.constraint(equalTo: contentG.bottomAnchor, constant: -16.0),
-            button1.heightAnchor.constraint(equalToConstant: CGFloat(55)),
-            button1.widthAnchor.constraint(equalToConstant: CGFloat(55))
+            homeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            homeView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            homeView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            homeView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupNavigationItem()
+    }
+
+    // MARK: - Layout
+    func setupNavigationItem() {
+        navigationItem.title = "Trail"
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .systemTeal
+        appearance.titleTextAttributes = [
+            .foregroundColor: UIColor.systemPurple,
+            .font: UIFont.monospacedSystemFont(ofSize: 20, weight: .bold)
+        ]
+        navigationItem.scrollEdgeAppearance = appearance
+    }
+
 }
-/*    override func viewDidLayoutSubviews() {
- super.viewDidLayoutSubviews()
- label.frame =
- CGRect(x: 20, y: view.height - view.safeAreaInsets.bottom - 50, width: view.width-40, height: 50)
- }*/
+
+extension HomeViewController: HomeViewDelegate {
+
+    func sendImage(_ image: UIImage) {
+        imagesThatWereTapped.append(image)
+    }
+
+}
