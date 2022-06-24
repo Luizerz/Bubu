@@ -17,7 +17,6 @@ class BubuTests: XCTestCase {
             sendImageWasCalled = true
         }
     }
-
     func testHomeViewButtonAction() {
         // given
         let mock = HomeViewDelegateMock()
@@ -29,6 +28,8 @@ class BubuTests: XCTestCase {
 
         // then
         XCTAssertFalse(mock.sendImageWasCalled)
+    func generalTest() {
+        XCTAssertEqual(1, 1)
     }
 
 }

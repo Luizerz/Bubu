@@ -30,6 +30,8 @@ class ChallengeViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
+
+        
         view.addSubview(enunciado)
         view.addSubview(answer)
         NSLayoutConstraint.activate([
@@ -73,9 +75,12 @@ class ChallengePageViewController: UIPageViewController, UIPageViewControllerDat
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Trdte"
+
         self.delegate = self
         self.dataSource = self
         self.setViewControllers( [enunciadosViewController[0]], direction: .forward, animated: true, completion: nil)
+
     }
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -90,6 +95,20 @@ class ChallengePageViewController: UIPageViewController, UIPageViewControllerDat
 }
 
 extension ChallengePageViewController: AnswerDelegate {
+
+    func setupNavigationItem() {
+
+           navigationItem.title = "Trail"
+           let appearance = UINavigationBarAppearance()
+           appearance.configureWithOpaqueBackground()
+           appearance.backgroundColor = .systemTeal
+           appearance.titleTextAttributes = [
+               .foregroundColor: UIColor.systemPurple,
+               .font: UIFont.monospacedSystemFont(ofSize: 20, weight: .bold)
+           ]
+           navigationItem.scrollEdgeAppearance = appearance
+    }
+
 
     func buttonWasTapped(correctAnswer: Bool, answers: [Answer]) {
 
