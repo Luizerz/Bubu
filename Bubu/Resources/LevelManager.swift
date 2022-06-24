@@ -7,9 +7,5 @@
 
 import Foundation
 
-class LevelManager{
-    
-    
-    
-    
-}
+//class LevelManager{
+//}
