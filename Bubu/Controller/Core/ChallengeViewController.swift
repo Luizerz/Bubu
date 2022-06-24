@@ -30,6 +30,8 @@ class ChallengeViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
+
+        
         view.addSubview(enunciado)
         view.addSubview(answer)
         NSLayoutConstraint.activate([
@@ -73,10 +75,20 @@ class ChallengePageViewController: UIPageViewController, UIPageViewControllerDat
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationItem() 
+
+        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 44))
+        view.addSubview(navBar)
+
+        let navItem = UINavigationItem(title: "SomeTitle")
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
+        navItem.rightBarButtonItem = doneItem
+
+        navBar.setItems([navItem], animated: false)
+
         self.delegate = self
         self.dataSource = self
         self.setViewControllers( [enunciadosViewController[0]], direction: .forward, animated: true, completion: nil)
+
     }
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
